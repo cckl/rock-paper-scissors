@@ -1,0 +1,50 @@
+<!DOCTYPEhtml>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Dosis|Rock+Salt" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+
+<div class="outer-box">
+  <div class="box">
+
+    <div class="scoreboard">
+      <span id="playerScore" class="score">0</span> | <span id="computerScore" class="score">0</span>
+    </div>
+
+    <div class="move">
+      <h2>What's your move?</h2>
+    </div>
+
+    <div class="choices">
+        <div class="choice" id="rock">
+          <img src="assets/rok.png" alt="rock">
+        </div>
+        <div class="choice" id="paper">
+          <img src="assets/ppr.png" alt="paper">
+        </div>
+        <div class="choice" id="scissors">
+          <img src="assets/szr.png" alt="scissors">
+        </div>
+    </div>
+
+    <div class="result">
+        <span id="result">Waiting for you to play...</span>
+    </div>
+
+    <div class="reset">
+        <button type="button" name="reset" id="resetButton">reset game</button>
+    </div>
+
+
+    <script src="app.js" charset="utf-8"></script>
+
+
+  </div>
+</div>
+</body>
