@@ -1,0 +1,73 @@
+body {
+  background-color: #bce8f9;
+  font-family: 'Dosis', sans serif;
+}
+
+.box {
+  background-color: white;
+  margin: 3em 12em 3em 12em;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 12px 12px rgba(22, 71, 136, 0.8);
+}
+
+button {
+  border: 1px solid black;
+  font-size: 18px;
+  visibility: hidden;
+}
+
+button:hover {
+  transition: 0.3s ease;
+  transform: scale(1.1);
+}
+
+.choices, .choice {
+  display: inline-block;
+  text-align: center;
+}
+
+.choice:hover {
+  transform: translateY(-5px);
+}
+
+.choice:active, button:active {
+  transform: translateY(5px);
+}
+
+div {
+  text-align: center;
+}
+
+h1 {
+  font: 42px Rock Salt;
+  text-align: center;
+}
+
+h1:hover {
+  transform: skew(-8deg);
+}
+
+h2, .result {
+  font-size: 28px;
+  font-style: bold;
+}
+
+img {
+  max-width: 12em;
+  padding: 1em;
+}
+
+.scoreboard {
+  font-size: 4em;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50px;
+  width: 25%;
+  margin: auto;
+  position: relative;
+}
+
+.result, .reset {
+  padding: 1em;
+}
