@@ -8,14 +8,14 @@ const choices_div = document.querySelector(".choices")
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
-const resetButton = document.getElementById("resetButton");
 
+// get computer move
 function getComputerChoice () {
   const choices = ["rock", "paper", "scissors"];
-  const choice = choices[Math.floor(Math.random() * choices.length)];
-  return choice;
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
+// Round result
 function win (playerChoice, computerChoice) {
   playerScore++;
   playerScore_span.innerHTML = playerScore;
@@ -29,22 +29,15 @@ function lose (playerChoice, computerChoice) {
   playerScore_span.innerHTML = playerScore;
 }
 
-function tie (userChoice, computerChoice) {
-  console.log("tie")
-}
-
-// Play a game
+// Play a round
 function playRound(playerChoice) {
   let computerChoice = getComputerChoice();
-  console.log(playerChoice);
-  console.log(computerChoice);
 
   switch (playerChoice + computerChoice) {
     case "rockscissors":
     case "paperrock":
     case "scissorspaper":
       win(playerChoice, computerChoice);
-
       break;
     case "rockpaper":
     case "paperscissors":
@@ -52,10 +45,9 @@ function playRound(playerChoice) {
       lose(playerChoice, computerChoice);
       result_span.innerHTML = `You played ${playerChoice} and Computer played ${computerChoice}. YOU LOSE.`
       break;
-    case "rockrock":
-    case "paperpaper":
-    case "scissorsscissors":
-      tie(playerChoice, computerChoice);
+      case "rockrock":
+      case "paperpaper":
+      case "scissorsscissors":
       result_span.innerHTML = `You played ${playerChoice} and Computer played ${computerChoice}. TIE. GO AGAIN.`
       break;
   }
@@ -63,47 +55,28 @@ function playRound(playerChoice) {
   if (playerScore === 5 ) {
     result_span.innerHTML = "GAME OVER. YOU OWNED THE COMPUTER."
     resetButton.style.visibility = "visible";
-    document.querySelector(".choices").disabled = true;
-
+    rock.removeEventListener('click', playRound, true)
   }
   else if (computerScore === 5 ) {
     result_span.innerHTML = "GAME OVER. COMPUTER SMASHED YOU. TRY AGAIN?"
     resetButton.style.visibility = "visible";
-    document.querySelector(".choices").disabled = true;
+    rock.removeEventListener('click', playRound, true)
   }
-
 }
 
 // Player makes a move
-rock.addEventListener('click', function () {
-  playRound("rock");
-})
-
-paper.addEventListener('click', function () {
-  playRound("paper");
-})
-
-scissors.addEventListener('click', function () {
-  playRound("scissors");
-})
+rock.addEventListener('click', () => playRound("rock"))
+paper.addEventListener('click', () => playRound("paper"))
+scissors.addEventListener('click', () => playRound("scissors"))
 
 // Reset game
-resetButton.addEventListener('click', function resetGame () {
+const resetButton = document.getElementById("resetButton");
+function resetGame () {
     playerScore = 0;
     computerScore = 0;
     playerScore_span.innerHTML = 0;
     computerScore_span.innerHTML = 0;
-    rock.removeEventListener('click', function () {
-      playRound("rock");
-    })
-
-    paper.removeEventListener('click', function () {
-      playRound("paper");
-    })
-
-    scissors.removeEventListener('click', function () {
-      playRound("scissors");
-    })
     result_span.innerHTML = "New game! Waiting for your move...";
     resetButton.style.visibility = "hidden";
-  })
+  }
+resetButton.addEventListener('click', resetGame, false)
